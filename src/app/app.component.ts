@@ -62,10 +62,10 @@ export class AppComponent {
   calcScore(): void {
     let score = 7;
 
-    if (this.minorThreads.length) {
-      score = 4
-    } else if (this.majorThreads.length) {
+    if (this.majorThreads.length || this.minorThreads.length >= 3) {
       score = 1
+    } else if (this.minorThreads.length && this.minorThreads.length <=2) {
+      score = 5
     }
 
     this.score = score
