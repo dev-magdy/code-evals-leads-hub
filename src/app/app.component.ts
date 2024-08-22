@@ -90,7 +90,8 @@ export class AppComponent {
     var locators = {
       "threadsList": ".flex.border-slate-300",
       "threadSections": "gap-3",	// inside a thread
-      "commentType": ".MuiChip-root > span",	// inside a section
+      "commentType": ".MuiChip-root",	// inside a section
+      "commentLabel": ".MuiChip-root > span",	// inside a section
       "commentLevel": "blockquote",	// inside a section
       "text": "div.whitespace-pre-wrap"	// inside a section
     };
@@ -98,10 +99,19 @@ export class AppComponent {
     function getComment(div: HTMLElement) {
       let comment = new Thread;
       comment.author = div.getElementsByTagName("a")[0].innerText;
-      comment.severity = (div.querySelector(locators.commentType) as HTMLElement).innerText;
+      
+      let severity = div.querySelector(locators.commentType)?.getAttribute("aria-label");
+      if (severity) {
+        comment.severity = severity;
+        comment.label = (div.querySelector(locators.commentLabel) as HTMLElement).innerText
+      } else {
+        comment.severity = (div.querySelector(locators.commentLabel) as HTMLElement).innerText;
+        comment.label = comment.severity
+      }
 
       let cLevel = div.getElementsByTagName("blockquote");
       comment.location = cLevel.length ? cLevel[0].innerText : "root";
+
       comment.text = (div.querySelector(locators.text) as HTMLElement).innerText;
 
       return comment
