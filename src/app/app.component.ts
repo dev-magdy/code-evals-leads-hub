@@ -88,7 +88,7 @@ export class AppComponent {
     this.praiseThreads = [];
 
     var locators = {
-      "threadsList": ".flex.border-slate-300",
+      "threadsList": ".flex.border-slate-300 .gap-4",
       "threadSections": "gap-3",	// inside a thread
       "commentType": ".MuiChip-root",	// inside a section
       "commentLabel": ".MuiChip-root > span",	// inside a section
