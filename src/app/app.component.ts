@@ -157,6 +157,7 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
+    // load theme
     document.documentElement.setAttribute('data-bs-theme', localStorage.getItem("theme") as string);
   }
 }
