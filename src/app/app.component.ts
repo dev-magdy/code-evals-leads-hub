@@ -136,6 +136,7 @@ export class AppComponent {
       let sections = Array.from(thread.getElementsByClassName(locators.threadSections)) as HTMLElement[];
       let comment = getComment(sections[0]);
       comment.replies = sections.length > 1 ? getReplies(sections.slice(1)) : [];
+      comment.resolved = thread.parentElement?.querySelector(".gap-1 button")?.innerHTML == "Reopen";
 
       switch (comment.severity) {
         case "General":

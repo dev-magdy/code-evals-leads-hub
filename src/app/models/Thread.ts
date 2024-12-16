@@ -1,6 +1,7 @@
 import { Reply } from "./Reply";
 
 export class Thread {
+    resolved: boolean;
     author: string;
     severity: string;
     label: string;
@@ -9,6 +10,7 @@ export class Thread {
     replies: Reply[];
 
     constructor() {
+        this.resolved = false;
         this.author = '';
         this.severity = '';
         this.label = '';

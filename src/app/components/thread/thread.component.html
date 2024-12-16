@@ -1,5 +1,12 @@
 <div class="card m-2">
-    <div class="card-header" [ngClass]="labelClass">{{content.label}}</div>
+    <div class="card-header d-flex justify-content-between align-items-center" [ngClass]="labelClass">
+      {{content.label}}
+      <button *ngIf="content.resolved" style="border: none; background: none;" class="btn m-0 p-0" (click)="removeThread(index)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+          <path d="M3 6h18v2H3zm3 3v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V9H6zm3 2h2v8H9v-8zm4 0h2v8h-2v-8zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"></path>
+        </svg>
+      </button>
+    </div>
     <div class="card-body">
         <span class="badge text-bg-info mb-1">{{content.author}}</span>
         <p class="card-text">{{content.text}}</p>

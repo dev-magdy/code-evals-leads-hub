@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Thread } from '../../models/Thread';
 
 @Component({
@@ -8,6 +8,8 @@ import { Thread } from '../../models/Thread';
 })
 export class ThreadComponent implements OnInit {
 
+  @Output() threadDelete = new EventEmitter<number>();
+  @Input() index: number = 0;
   @Input() content: Thread;
 
   labelClass: string = "";
@@ -24,8 +26,15 @@ export class ThreadComponent implements OnInit {
       "Praise": "text-bg-success",
       "General": "text-bg-primary"
     };
-
     let key = this.content.severity as keyof typeof classMap;
     this.labelClass = classMap[key]
+
+    if (this.content.resolved) {
+      this.labelClass += " opacity-50"
+    }
+  }
+
+  removeThread(i: number): void {
+    this.threadDelete.emit(i)
   }
 }

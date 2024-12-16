@@ -3,7 +3,7 @@
     <div class="col">
       <div class="d-flex align-items-center">
         <h6 class="display-6 mx-2">Code Evals Reviewer Hub</h6>
-        <small>v 0.3</small>
+        <small>v 0.4</small>
       </div>
     </div>
     <div class="col d-flex justify-content-end">
@@ -35,19 +35,19 @@
   <div class="row">
     <div class="col">
       <h5 class="text-center">General</h5>
-      <app-comments-list [threads]="generalThreads"></app-comments-list>
+      <app-comments-list [threads]="generalThreads" (threadsUpdated)="calcScore()"></app-comments-list>
     </div>
     <div class="col">
       <h5 class="text-center">Major Issue</h5>
-      <app-comments-list [threads]="majorThreads"></app-comments-list>
+      <app-comments-list [threads]="majorThreads" (threadsUpdated)="calcScore()"></app-comments-list>
     </div>
     <div class="col">
       <h5 class="text-center">Minor Issue</h5>
-      <app-comments-list [threads]="minorThreads"></app-comments-list>
+      <app-comments-list [threads]="minorThreads" (threadsUpdated)="calcScore()"></app-comments-list>
     </div>
     <div class="col">
       <h5 class="text-center">Praise</h5>
-      <app-comments-list [threads]="praiseThreads"></app-comments-list>
+      <app-comments-list [threads]="praiseThreads" (threadsUpdated)="calcScore()"></app-comments-list>
     </div>
   </div>
 </div>
